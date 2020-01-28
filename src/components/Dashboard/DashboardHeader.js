@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
 import { Aid, Biohazard, Skull, Critical, KDRatio } from "../Icons";
-import {HexColors} from "../constants";
+import {HexColors, Colors} from "../constants";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -23,61 +23,64 @@ function DashboardHeader ({
     mortality_rate }) {
   return (
     <DashboardContainer>
-      <Card color={HexColors.infected} >
+      <Card color={HexColors.infected} 
+        >
         <CardTitle>
           <div>
-            <Biohazard />
-          </div>
+            <Biohazard fill={Colors.infected} />
+          </div>  
+          <CardChildren>
+            {total_cases}
+          </CardChildren>
           <div>
             Infected
           </div>
-        </CardTitle>        
-        <CardChildren>
-          {total_cases}
-        </CardChildren>
+        </CardTitle>
       </Card>
 
       <Card color={HexColors.serious} >
         <CardTitle>
           <div>
-            <Aid />
+            <Aid stroke={Colors.serious}/>
           </div>
+          <CardChildren>
+            {total_serious}
+          </CardChildren>
           <div>
             Serious
           </div>
-        </CardTitle>        
-        <CardChildren>
-          {total_serious}
-        </CardChildren>
+        </CardTitle>
       </Card>
       
-      <Card color={HexColors.critical} >
+      <Card color={HexColors.critical} 
+        >
         <CardTitle>
           <div>
-            <Critical />
+            <Critical fill={Colors.critical} />
           </div>
+          <CardChildren>
+            {total_critical}
+          </CardChildren>
           <div>
             Critical
           </div>
-        </CardTitle>        
-        <CardChildren>
-          {total_critical}
-        </CardChildren>
+        </CardTitle>
       </Card>
       
 
-      <Card color={HexColors.deaths} >
+      <Card color={HexColors.deaths} 
+        >
         <CardTitle>
           <div>
-            <Skull />
+            <Skull fill={Colors.deaths}/>
           </div>
+          <CardChildren>
+            {total_deaths}
+          </CardChildren>
           <div>
             Dead
           </div>
         </CardTitle>
-        <CardChildren>
-          {total_deaths}
-        </CardChildren>
       </Card>
 
       <Card color={'lightgray'}>

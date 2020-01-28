@@ -26,7 +26,10 @@ const CardBlock = styled.div`
 
 function Card ({title, children, color}) {
   return (
-    <CardContainer style={{backgroundColor: color}}>
+    <CardContainer 
+      style={{backgroundColor: color}}
+      // style={{border: 'solid 2px ' + color}}
+      >
       <CardBlock>
         {title}
         <div>

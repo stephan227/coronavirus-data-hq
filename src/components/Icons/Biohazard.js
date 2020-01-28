@@ -1,8 +1,8 @@
 import React from "react";
 
-function Biohazard ({width='24px', height='24px'}) {
+function Biohazard ({width='24px', height='24px', fill}) {
   return (
-    <svg height={height} width={width} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    <svg height={height} width={width} fill={fill} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="0 0 511.998 511.998" style={{"enableBackground":"new 0 0 511.998 511.998"}} xmlSpace="preserve">
     <g>
       <g>

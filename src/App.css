@@ -7,3 +7,13 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+
+.tdBefore {
+  /* color: red; */
+  font-weight: 400 !important;
+}
+
+tr {
+  border: none !important;
+  border-top: 1px solid #000 !important;
+}
