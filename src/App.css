@@ -1,12 +1,9 @@
-
-h1,
-h2,
-p {
+body {
   font-family: sans-serif;
   text-align: center;
 }
 .leaflet-container {
-  height: 600px;
+  height: 400px;
   width: 100%;
   margin: 0 auto;
 }
