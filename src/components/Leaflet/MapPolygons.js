@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import styled from "styled-components";
 import {
   Circle,
   Map,
   Popup,
   TileLayer,
-} from 'react-leaflet'
+} from 'react-leaflet';
 
 const center = [30.583332, 114.283333]
 
+const TooltipTitle = styled.div`
+  font-weight: 600;
+  padding: 5px;
+`
 export default class VectorLayersExample extends Component {
   render() {
     return (
@@ -20,14 +25,23 @@ export default class VectorLayersExample extends Component {
             return (
               <Circle key={item.county_id} center={item.coordinates} color="red" fillColor="red" radius={Math.log2(item.cases) * 15000}>
                 <Popup>
+                  <TooltipTitle>
+                    {item.county_name} - {item.country_name}
+                  </TooltipTitle>
                   <div>
-                    {item.county_name}
+                    Infected: {item.cases}
                   </div>
                   <div>
-                    {item.cases}
+                    Serious: {item.serious}
                   </div>
                   <div>
-                    {item.country_name}
+                    Critical: {item.critical}
+                  </div>
+                  <div>
+                    Dead: {item.deaths}
+                  </div>
+                  <div>
+                    Recovered: {item.recovered}
                   </div>
                 </Popup>
               </Circle>

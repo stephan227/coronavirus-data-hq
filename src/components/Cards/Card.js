@@ -24,14 +24,10 @@ const CardBlock = styled.div`
   padding: 30px 25px;
 `
 
-function Card ({title, children, color}) {
+function Card ({ children, color, blockStyle={}}) {
   return (
-    <CardContainer 
-      style={{backgroundColor: color}}
-      // style={{border: 'solid 2px ' + color}}
-      >
-      <CardBlock>
-        {title}
+    <CardContainer style={{backgroundColor: color}}>
+      <CardBlock style={blockStyle}>
         <div>
           {children}
         </div>

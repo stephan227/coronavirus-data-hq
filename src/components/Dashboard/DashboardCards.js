@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
 import { Aid, Biohazard, Skull, Critical, KDRatio } from "../Icons";
-import {HexColors, Colors} from "../constants";
+import { HexColors } from "../constants";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const CardTitle = styled.div`
   display: inline-block;
 `
 
-function DashboardHeader ({
+function DashboardCards ({
     total_cases,
     total_deaths,
     total_serious,
@@ -27,7 +27,7 @@ function DashboardHeader ({
         >
         <CardTitle>
           <div>
-            <Biohazard fill={Colors.infected} />
+            <Biohazard />
           </div>  
           <CardChildren>
             {total_cases}
@@ -41,7 +41,7 @@ function DashboardHeader ({
       <Card color={HexColors.serious} >
         <CardTitle>
           <div>
-            <Aid stroke={Colors.serious}/>
+            <Aid />
           </div>
           <CardChildren>
             {total_serious}
@@ -52,11 +52,10 @@ function DashboardHeader ({
         </CardTitle>
       </Card>
       
-      <Card color={HexColors.critical} 
-        >
+      <Card color={HexColors.critical} >
         <CardTitle>
           <div>
-            <Critical fill={Colors.critical} />
+            <Critical />
           </div>
           <CardChildren>
             {total_critical}
@@ -67,12 +66,10 @@ function DashboardHeader ({
         </CardTitle>
       </Card>
       
-
-      <Card color={HexColors.deaths} 
-        >
+      <Card color={HexColors.deaths} >
         <CardTitle>
           <div>
-            <Skull fill={Colors.deaths}/>
+            <Skull />
           </div>
           <CardChildren>
             {total_deaths}
@@ -88,17 +85,16 @@ function DashboardHeader ({
           <div>
             <KDRatio />
           </div>
+          <CardChildren>
+            {mortality_rate} %
+          </CardChildren>
           <div>
-            K/D Ratio
+            Death Rate
           </div>
         </CardTitle>
-        <CardChildren>
-          {mortality_rate}%
-        </CardChildren>
       </Card>
-
     </DashboardContainer>
   )
 }
 
-export default DashboardHeader;
+export default DashboardCards;

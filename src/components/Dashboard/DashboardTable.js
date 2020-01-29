@@ -20,11 +20,12 @@ const CreateTableFromData = (table_data) => {
   for (var item in table_data) {
     new_table.push(
       <Tr key={item}>
-        <Td style={{fontWeight: 800}}>{item}</Td>
-        <Td style={{fontWeight: 400}}>{table_data[item].cases}</Td>
-        <Td style={{fontWeight: 400}}>{table_data[item].serious}</Td>
-        <Td style={{fontWeight: 400}}>{table_data[item].critical}</Td>
-        <Td style={{fontWeight: 400}}>{table_data[item].deaths}</Td>
+        <Td style={{fontWeight: 800, fontSize: '1.1em'}}>{item}</Td>
+        <Td style={{fontWeight: 400, fontSize: '.9em'}}>{table_data[item].cases}</Td>
+        <Td style={{fontWeight: 400, fontSize: '.9em'}}>{table_data[item].serious}</Td>
+        <Td style={{fontWeight: 400, fontSize: '.9em'}}>{table_data[item].critical}</Td>
+        <Td style={{fontWeight: 400, fontSize: '.9em'}}>{table_data[item].recovered}</Td>
+        <Td style={{fontWeight: 400, fontSize: '.9em'}}>{table_data[item].deaths}</Td>
       </Tr>
     )
   }
@@ -48,6 +49,7 @@ function DashboardTable ({table_data}) {
                 <Th style={{fontWeight: 400}}>Infected</Th>
                 <Th style={{fontWeight: 400}}>Serious</Th>
                 <Th style={{fontWeight: 400}}>Critical</Th>
+                <Th style={{fontWeight: 400}}>Recovered</Th>
                 <Th style={{fontWeight: 400}}>Dead</Th>
               </Tr>
             </Thead>

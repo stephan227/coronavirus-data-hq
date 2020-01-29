@@ -1,4 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Coronavirus Tracker
+The following repo contains the Coronavirus Tracker source code.
+
+
+## Development Requirements
+  Node: v10.15.0
+  Yarn: 1.12.3
 
 ## Available Scripts
 

@@ -1,8 +1,8 @@
 exports.Colors = {
-  // 'infected': '#fbd808',
-  // 'serious': '#ff9005',
-  // 'critical': '#f9530b',
-  // 'deaths': '#ff0000'
+  'infected': '#fbd808',
+  'serious': '#ff9005',
+  'critical': '#f9530b',
+  'deaths': '#ff0000'
 }
 
 exports.HexColors = {
