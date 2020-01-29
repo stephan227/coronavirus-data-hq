@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
-import { Biohazard } from "../Icons";
+import { Virus } from "../Icons";
 const DashboardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +24,7 @@ function DashboardTitle () {
       <Card blockStyle={{padding: '15px 10px'}}>
         <CardTitle>
             <CardTitleItem>
-              <Biohazard />
+              <Virus />
             </CardTitleItem>
             <CardTitleItem>
               Coronavirus Tracker

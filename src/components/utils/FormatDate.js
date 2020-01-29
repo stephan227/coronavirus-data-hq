@@ -21,10 +21,9 @@ const ConvertDateToReadableFormat = (dateVal) => {
   let hours = now.getHours()
   let amOrPM = checkAMorPM(hours)
   hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
+  hours = hours ? hours : 12;
 
   return (
-    // `${days[now.getDay()]}, 
     `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} ${hours}:${checkZero(now.getMinutes())}:${checkZero(now.getSeconds())} ${amOrPM}`
   )
 }
