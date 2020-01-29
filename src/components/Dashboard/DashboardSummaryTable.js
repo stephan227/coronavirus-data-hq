@@ -33,8 +33,7 @@ const CreateTableFromData = (table_data) => {
 }
 
 
-function DashboardTable ({table_data}) {
-  console.log(table_data)
+function DashboardSummaryTable ({table_data}) {
   return (
     <DashboardContainer>
       <Card>
@@ -65,4 +64,4 @@ function DashboardTable ({table_data}) {
   )
 }
 
-export default DashboardTable;
+export default DashboardSummaryTable;

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 
 import './App.css';
@@ -7,9 +6,10 @@ import './App.css';
 import DashboardMap from './components/Dashboard/DashboardMap';
 import DashboardHeader from './components/Dashboard/DashboardCards';
 import DashboardLineChart from './components/Dashboard/DashboardLineChart';
-import DashboardTable from './components/Dashboard/DashboardTable';
+import DashboardSummaryTable from './components/Dashboard/DashboardSummaryTable';
 import DashboardTitle from './components/Dashboard/DashboardTitle';
 import DashboardFooter from './components/Dashboard/DashboardFooter';
+import DashboardPredictionTables from './components/Dashboard/DashboardPredictionTables';
 
 import { ConvertDateToReadableFormat } from './components/utils/FormatDate';
 
@@ -64,20 +64,6 @@ const CalculateTableData = (WuhanVirusData) => {
   return table_data;
 }
 
-const ChartContainer = styled.div`
-padding: 0;
-margin: 0;
-list-style: none;
-
-display: -webkit-box;
-display: -moz-box;
-display: -ms-flexbox;
-display: -webkit-flex;
-display: flex;
-
--webkit-flex-flow: row wrap;
-`
-
 function useDataFetchEffect(query, data_prop=[]) {  
   const [data, setData] = useState(data_prop)
 
@@ -100,10 +86,11 @@ function App() {
   // const WuhanVirusData = useDataFetchEffect('/test_data/wuhan-virus.json', [])
   // const LastUpdated = useDataFetchEffect('/test_data/last-updated.json', {})
   
-  const ConfirmedForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-confirmed-data.json', {})
-  const DeathsForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-deaths-data.json', {})
-  const WuhanVirusData = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/wuhan-virus.json', [])
-  const LastUpdated = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/last-updated.json', {})
+  const ConfirmedForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-confirmed-data.json', {});
+  const DeathsForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-deaths-data.json', {});
+  const WuhanVirusData = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/wuhan-virus.json', []);
+  const LastUpdated = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/last-updated.json', {});
+  const prediction_data = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/actual-vs-forecast-data.json', []);
   
   const map_data = CalculateMapData(WuhanVirusData);
   const table_data = CalculateTableData(WuhanVirusData);
@@ -114,6 +101,7 @@ function App() {
   return (
     <div>
       <DashboardTitle/>
+
       <DashboardHeader
         total_cases={total_cases}
         total_deaths={total_deaths}
@@ -121,25 +109,17 @@ function App() {
         total_critical={total_critical}
         mortality_rate={mortality_rate}
       />
-      <DashboardMap 
-        map_data={map_data}
-      />
-      <ChartContainer>
-        <DashboardLineChart 
-          title={'Infected vs. Forecast'}
-          chart_data={ConfirmedForecast}/>
-        
-        <DashboardLineChart
-          title={'Deaths vs. Forecast'}
-          chart_data={DeathsForecast}/>
-      </ChartContainer>
 
-      <DashboardTable 
-        table_data={table_data}
-      />
-      <DashboardFooter 
-        last_updated={last_updated}
-      />
+      <DashboardMap map_data={map_data}/>
+
+      <DashboardLineChart 
+          ConfirmedForecast={ConfirmedForecast}
+          DeathsForecast={DeathsForecast} />
+
+      <DashboardPredictionTables prediction_data={prediction_data}/>
+
+      <DashboardSummaryTable table_data={table_data}/>
+      <DashboardFooter last_updated={last_updated}/>
     </div>
   );
 }
