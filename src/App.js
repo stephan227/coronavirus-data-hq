@@ -85,12 +85,13 @@ function App() {
   // const DeathsForecast = useDataFetchEffect('/test_data/echart-deaths-data.json', {})
   // const WuhanVirusData = useDataFetchEffect('/test_data/wuhan-virus.json', [])
   // const LastUpdated = useDataFetchEffect('/test_data/last-updated.json', {})
-  
-  const ConfirmedForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-confirmed-data.json', {});
-  const DeathsForecast = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/echart-deaths-data.json', {});
-  const WuhanVirusData = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/wuhan-virus.json', []);
-  const LastUpdated = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/last-updated.json', {});
-  const prediction_data = useDataFetchEffect('https://data-hq.sfo2.cdn.digitaloceanspaces.com/actual-vs-forecast-data.json', []);
+  const s3URL = 'https://coronavirus-e5c5.kxcdn.com'
+  // const s3URL = 'https://data-hq.sfo2.digitaloceanspaces.com'
+  const ConfirmedForecast = useDataFetchEffect(`${s3URL}/echart-confirmed-data.json`, {});
+  const DeathsForecast = useDataFetchEffect(`${s3URL}/echart-deaths-data.json`, {});
+  const WuhanVirusData = useDataFetchEffect(`${s3URL}/wuhan-virus.json`, []);
+  const LastUpdated = useDataFetchEffect(`${s3URL}/last-updated.json`, {});
+  const prediction_data = useDataFetchEffect(`${s3URL}/actual-vs-forecast-data.json`, []);
   
   const map_data = CalculateMapData(WuhanVirusData);
   const table_data = CalculateTableData(WuhanVirusData);
