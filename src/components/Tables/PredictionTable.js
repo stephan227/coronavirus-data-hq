@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import NumberFormat from 'react-number-format';
 
 const Table = styled.table`
   width: 200px;
@@ -11,7 +12,9 @@ const TableHeading = styled.th`
   padding: 3px 10px;
 `
 const TableRow = styled.tr`
-  height: 18px; 
+  height: 16px !important; 
+  border: none !important;
+  border-top: none !important;
   ${props => {
     if (props.isToday) {
       return `background-color: #dceef4;`
@@ -22,13 +25,14 @@ const TableRow = styled.tr`
 `
 
 const TableRowHeader = styled(TableRow)`
-border-bottom: solid 1px black;
+  border: none !important;
+  border-top: none !important;
 `
 const TableBody = styled.tbody`
   font-size: .8em;
 `
 const TableCell = styled.td`
-  padding: 2px 10px;
+  padding: 0px 10px;
   text-align: right;
 `
 const FirstTableCell = styled.td`
@@ -79,10 +83,10 @@ function PredictionTable ({
                   {item.date}
                 </FirstTableCell>
                 <TableCell>
-                  {item[forecast_property_name]}
+                  <NumberFormat value={item[forecast_property_name]} displayType={'text'} thousandSeparator={true} />
                 </TableCell>
                 <TableCell>
-                  {item[actual_property_name]}
+                  <NumberFormat value={item[actual_property_name]} displayType={'text'} thousandSeparator={true} />
                 </TableCell>
             </TableRow>
             )
