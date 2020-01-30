@@ -3,8 +3,11 @@ The following repo contains the Coronavirus Tracker source code.
 
 
 ## Development Requirements
+```
   Node: v10.15.0
   Yarn: 1.12.3
+  Now: 16.7.3
+```
 
 ## Available Scripts
 
@@ -58,7 +61,7 @@ Install now:
 
 ### `Deploy to production`
 ```
-  $ now
+  $ now --prod
 ```
 
 ### `yarn build` fails to minify

@@ -12,19 +12,15 @@ const CardTitleItem = styled.div`
   font-weight: 600;
 `
 
-
 const CardItem = styled(CardTitleItem)`
   font-size: .8em;
   color: #696969;
   font-weight: 400;
 `
 
-const CardTitle = styled.div`
-`
+const CardTitle = styled.div``
 
-const FooterLink = styled.a`
-
-`
+const FooterLink = styled.a``
 
 function DashboardFooter ({last_updated}) {  
   return (
