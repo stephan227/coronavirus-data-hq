@@ -11,8 +11,7 @@ const TableHeading = styled.th`
   padding: 3px 10px;
 `
 const TableRow = styled.tr`
-
-  height: 19px; 
+  height: 18px; 
   ${props => {
     if (props.isToday) {
       return `background-color: #dceef4;`
