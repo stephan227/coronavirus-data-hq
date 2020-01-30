@@ -17,6 +17,9 @@ function checkAMorPM(hours) {
 }
 
 const ConvertDateToReadableFormat = (dateVal) => {
+  if (!dateVal) {
+    return '';
+  }
   const now = new Date(dateVal);
   let hours = now.getHours()
   let amOrPM = checkAMorPM(hours)

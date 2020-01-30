@@ -44,7 +44,6 @@ function App() {
   const ConfirmedForecast = useDataFetchEffect(`${s3URL}/echart-confirmed`, {});
   const DeathsForecast = useDataFetchEffect(`${s3URL}/echart-deaths`, {});
   const WuhanVirusData = useDataFetchEffect(`${s3URL}/global-stats`, []);
-  const LastUpdated = {} //useDataFetchEffect(`${s3URL}/last-updated.json`, {});
   const prediction_data = useDataFetchEffect(`${s3URL}/actual-vs-forecast`, []);
   
   const map_data = CalculateMapData(WuhanVirusData.data);
@@ -52,7 +51,7 @@ function App() {
   const virusTotals = CalculateTotals(WuhanVirusData.data);
 
   const {total_cases, total_deaths, total_serious, total_critical, mortality_rate} = virusTotals;
-  const last_updated = ConvertDateToReadableFormat (LastUpdated.last_updated);
+  const last_updated = ConvertDateToReadableFormat (WuhanVirusData.insert_date);
   return (
     <div>
       <DashboardTitle/>
