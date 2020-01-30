@@ -61,7 +61,7 @@ Install now:
 
 ### `Deploy to production`
 ```
-  $ now --prod
+  $ now
 ```
 
 ### `yarn build` fails to minify
