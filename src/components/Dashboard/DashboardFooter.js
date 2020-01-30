@@ -13,7 +13,7 @@ const CardTitleItem = styled.div`
 `
 
 
-const CardItemRight = styled(CardTitleItem)`
+const CardItem = styled(CardTitleItem)`
   font-size: .8em;
   color: #696969;
   font-weight: 400;
@@ -22,14 +22,23 @@ const CardItemRight = styled(CardTitleItem)`
 const CardTitle = styled.div`
 `
 
+const FooterLink = styled.a`
+
+`
+
 function DashboardFooter ({last_updated}) {  
   return (
     <DashboardContainer>
       <Card blockStyle={{padding: '15px 10px'}}>
         <CardTitle>
-            <CardItemRight>
+            <CardItem>
               Last Updated: {last_updated}
-            </CardItemRight>
+            </CardItem>
+            <CardItem>
+              <FooterLink rel="noopener" target="_blank" href={`https://github.com/stephan227/coronavirus-data-hq`}>
+                Github
+              </FooterLink>
+            </CardItem>
         </CardTitle>
       </Card>
     </DashboardContainer>
