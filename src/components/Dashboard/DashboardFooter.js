@@ -20,7 +20,7 @@ const CardItem = styled(CardTitleItem)`
 
 const CardTitle = styled.div``
 
-const FooterLink = styled.a``
+// const FooterLink = styled.a``
 
 function DashboardFooter ({last_updated}) {  
   return (
@@ -29,11 +29,6 @@ function DashboardFooter ({last_updated}) {
         <CardTitle>
             <CardItem>
               Last Updated: {last_updated}
-            </CardItem>
-            <CardItem>
-              <FooterLink rel="noopener" target="_blank" href={`https://github.com/stephan227/coronavirus-data-hq`}>
-                Github
-              </FooterLink>
             </CardItem>
         </CardTitle>
       </Card>
