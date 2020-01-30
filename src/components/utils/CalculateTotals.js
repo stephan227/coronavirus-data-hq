@@ -1,5 +1,9 @@
 // Create Object with summary of totals for each country
 const CalculateTableData = (WuhanVirusData) => {
+  if (!WuhanVirusData) {
+    return {}
+  }
+
   const table_data = WuhanVirusData.reduce((all, item) => {
     if (all[item.country_name]) {
       all[item.country_name] = {
@@ -35,6 +39,10 @@ const getSumByProperty = (data, property) => {
 
 // Calculate global totals
 const CalculateTotals = (WuhanVirusData) => {
+  if (!WuhanVirusData) {
+    return {};
+  }
+
   const total_cases = getSumByProperty(WuhanVirusData, 'cases');
   const total_deaths = getSumByProperty(WuhanVirusData, 'deaths');
   const total_serious = getSumByProperty(WuhanVirusData, 'serious');
@@ -46,6 +54,9 @@ const CalculateTotals = (WuhanVirusData) => {
 
 // Perform calculations for map data
 const CalculateMapData = (WuhanVirusData) => {
+  if (!WuhanVirusData) {
+    return []
+  }
   const map_data = WuhanVirusData;
   return map_data
 }

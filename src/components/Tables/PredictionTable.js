@@ -59,6 +59,7 @@ function PredictionTable ({
   forecast_property_name,
   actual_property_name
 }) {
+  console.log('prediction_data', prediction_data)
   return (
     <Table>
       <TableHeader>

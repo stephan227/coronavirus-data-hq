@@ -16,16 +16,16 @@ import { ConvertDateToReadableFormat } from './components/utils/FormatDate';
 import { CalculateMapData, CalculateTotals, CalculateTableData }  from './components/utils/CalculateTotals';
 
 
-function useDataFetchEffect(query, data_prop=[]) {  
-  const [data, setData] = useState(data_prop)
+function useDataFetchEffect(query, dataProps) {  
+  const [data, setData] = useState({data: dataProps})
 
-  // Reset Cache every hour
-  // TODO: Replace with API and DB 
-  const currentDate = new Date()
-  const utcTimestamp = (currentDate.getTime() + currentDate.getTimezoneOffset()*60*1000);
-  const hourTimeStamp = Math.floor(((utcTimestamp/1000)/60)/60)
+  // // Reset Cache every hour
+  // // TODO: Replace with API and DB 
+  // const currentDate = new Date()
+  // const utcTimestamp = (currentDate.getTime() + currentDate.getTimezoneOffset()*60*1000);
+  // const hourTimeStamp = Math.floor(((utcTimestamp/1000)/60)/60)
   
-  const fetchQuery =`${query}?date=${hourTimeStamp}`
+  const fetchQuery =`${query}`
   useEffect(() => {
     axios(
         fetchQuery
@@ -39,21 +39,17 @@ function useDataFetchEffect(query, data_prop=[]) {
 }
 
 function App() {
-  // const ConfirmedForecast = useDataFetchEffect('/test_data/echart-confirmed-data.json', {})
-  // const DeathsForecast = useDataFetchEffect('/test_data/echart-deaths-data.json', {})
-  // const WuhanVirusData = useDataFetchEffect('/test_data/wuhan-virus.json', [])
-  // const LastUpdated = useDataFetchEffect('/test_data/last-updated.json', {})
-  const s3URL = 'https://coronavirus-e5c5.kxcdn.com'
-  // const s3URL = 'https://data-hq.sfo2.digitaloceanspaces.com'
-  const ConfirmedForecast = useDataFetchEffect(`${s3URL}/echart-confirmed-data.json`, {});
-  const DeathsForecast = useDataFetchEffect(`${s3URL}/echart-deaths-data.json`, {});
-  const WuhanVirusData = useDataFetchEffect(`${s3URL}/wuhan-virus.json`, []);
-  const LastUpdated = useDataFetchEffect(`${s3URL}/last-updated.json`, {});
-  const prediction_data = useDataFetchEffect(`${s3URL}/actual-vs-forecast-data.json`, []);
+  // const s3URL = 'https://coronarovirus-api.s773.now.sh/api'
+  const s3URL = '/api'
+  const ConfirmedForecast = useDataFetchEffect(`${s3URL}/echart-confirmed`, {});
+  const DeathsForecast = useDataFetchEffect(`${s3URL}/echart-deaths`, {});
+  const WuhanVirusData = useDataFetchEffect(`${s3URL}/global-stats`, []);
+  const LastUpdated = {} //useDataFetchEffect(`${s3URL}/last-updated.json`, {});
+  const prediction_data = useDataFetchEffect(`${s3URL}/actual-vs-forecast`, []);
   
-  const map_data = CalculateMapData(WuhanVirusData);
-  const table_data = CalculateTableData(WuhanVirusData);
-  const virusTotals = CalculateTotals(WuhanVirusData);
+  const map_data = CalculateMapData(WuhanVirusData.data);
+  const table_data = CalculateTableData(WuhanVirusData.data);
+  const virusTotals = CalculateTotals(WuhanVirusData.data);
 
   const {total_cases, total_deaths, total_serious, total_critical, mortality_rate} = virusTotals;
   const last_updated = ConvertDateToReadableFormat (LastUpdated.last_updated);
@@ -72,10 +68,10 @@ function App() {
       <DashboardMap map_data={map_data}/>
       <DashboardSuspectedCasesMap />
       <DashboardLineChart 
-          ConfirmedForecast={ConfirmedForecast}
-          DeathsForecast={DeathsForecast} />
+          ConfirmedForecast={ConfirmedForecast.data}
+          DeathsForecast={DeathsForecast.data} />
 
-      <DashboardPredictionTables prediction_data={prediction_data}/>
+      <DashboardPredictionTables prediction_data={prediction_data.data}/>
 
       <DashboardSummaryTable table_data={table_data}/>
       <DashboardFooter last_updated={last_updated}/>

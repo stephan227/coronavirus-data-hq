@@ -1,0 +1,10 @@
+{
+  "name": "coronavirus-data-hq",
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://coronarovirus-api.s773.now.sh/api/$1"
+    }
+  ]
+}
