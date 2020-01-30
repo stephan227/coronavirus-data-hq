@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
-import MapPolygons from "../Leaflet/MapPolygons";
+import SuspectedCasesMap from "../Leaflet/SuspectedCasesMap";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -10,21 +10,22 @@ const DashboardContainer = styled.div`
 
 const ChartTitle = styled.div`
   font-weight: 600;
-  padding-bottom: 7px;
+  padding-bottom: 12px;
 `
-function DashboardBody ({map_data}) {
+
+function DashboardSuspectedCasesMap () {
   return (
     <DashboardContainer>
       <Card>
         <ChartTitle>
-          World Wide Reports
+          Suspected Cases and Notable Events
         </ChartTitle>
         <div>
-          <MapPolygons map_data={map_data} />
+          <SuspectedCasesMap />
         </div>
       </Card>
     </DashboardContainer>
   )
 }
 
-export default DashboardBody;
+export default DashboardSuspectedCasesMap;

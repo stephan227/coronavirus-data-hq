@@ -10,9 +10,11 @@ import DashboardSummaryTable from './components/Dashboard/DashboardSummaryTable'
 import DashboardTitle from './components/Dashboard/DashboardTitle';
 import DashboardFooter from './components/Dashboard/DashboardFooter';
 import DashboardPredictionTables from './components/Dashboard/DashboardPredictionTables';
+import DashboardSuspectedCasesMap from './components/Dashboard/DashboardSuspectedCasesMap';
 
 import { ConvertDateToReadableFormat } from './components/utils/FormatDate';
 import { CalculateMapData, CalculateTotals, CalculateTableData }  from './components/utils/CalculateTotals';
+
 
 function useDataFetchEffect(query, data_prop=[]) {  
   const [data, setData] = useState(data_prop)
@@ -61,7 +63,7 @@ function App() {
       />
 
       <DashboardMap map_data={map_data}/>
-
+      <DashboardSuspectedCasesMap />
       <DashboardLineChart 
           ConfirmedForecast={ConfirmedForecast}
           DeathsForecast={DeathsForecast} />
