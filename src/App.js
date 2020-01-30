@@ -45,6 +45,7 @@ function App() {
   const DeathsForecast = useDataFetchEffect(`${s3URL}/echart-deaths`, {});
   const WuhanVirusData = useDataFetchEffect(`${s3URL}/global-stats`, []);
   const prediction_data = useDataFetchEffect(`${s3URL}/actual-vs-forecast`, []);
+  const suspected = useDataFetchEffect(`${s3URL}/suspected`, {});
   
   const map_data = CalculateMapData(WuhanVirusData.data);
   const table_data = CalculateTableData(WuhanVirusData.data);
@@ -57,6 +58,7 @@ function App() {
       <DashboardTitle/>
 
       <DashboardHeader
+        suspected={suspected.data}
         total_cases={total_cases}
         total_deaths={total_deaths}
         total_serious={total_serious}

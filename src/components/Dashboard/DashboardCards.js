@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Card from "../Cards/Card";
 import { Aid, Biohazard, Skull, Critical, KDRatio } from "../Icons";
 import { HexColors } from "../constants";
+import Suspect from "../Icons/Suspect";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -16,6 +17,7 @@ const CardTitle = styled.div`
 `
 
 function DashboardCards ({
+    suspected,
     total_cases,
     total_deaths,
     total_serious,
@@ -90,6 +92,19 @@ function DashboardCards ({
           </CardChildren>
           <div>
             Death Rate
+          </div>
+        </CardTitle>
+      </Card>
+      <Card color={"#e9e9e9"}>
+        <CardTitle>
+          <div>
+            <Suspect />
+          </div>
+          <CardChildren>
+            {suspected.suspected}
+          </CardChildren>
+          <div>
+            Suspected
           </div>
         </CardTitle>
       </Card>
