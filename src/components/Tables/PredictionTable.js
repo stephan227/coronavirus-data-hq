@@ -10,7 +10,15 @@ const TableHeading = styled.th`
   font-size: .9em;
   padding: 3px 10px;
 `
-const TableRow = styled.tr``
+const TableRow = styled.tr`
+  ${props => {
+    if (props.isToday) {
+      return `background-color: #dceef4;`
+    } else {
+      return ``;
+    }
+  }}
+`
 
 const TableRowHeader = styled(TableRow)`
 border-bottom: solid 1px black;
@@ -25,6 +33,21 @@ const TableCell = styled.td`
 const FirstTableCell = styled.td`
   text-align: left;
 `
+
+const isToday = (dateToCheck) => {
+  try {
+    const parsedDateToCheck = new Date(dateToCheck);
+    const today = new Date()
+    return (
+      parsedDateToCheck.getDate() === today.getDate() &&
+      parsedDateToCheck.getMonth() === today.getMonth() &&
+      parsedDateToCheck.getFullYear() === today.getFullYear()
+    )
+  } catch (e) {
+    return false;
+  }
+}
+
 
 function PredictionTable ({
   prediction_data,
@@ -50,8 +73,7 @@ function PredictionTable ({
         {
           prediction_data.map((item) => {
             return (
-
-              <TableRow key={`${forecast_property_name}${item.date}`}>
+              <TableRow isToday={isToday(item.date)} key={`${forecast_property_name}${item.date}`}>
                 <FirstTableCell>
                   {item.date}
                 </FirstTableCell>

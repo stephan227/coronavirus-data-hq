@@ -13,18 +13,15 @@ const ChartTitle = styled.div`
   padding-bottom: 7px;
 `
 
-
 const ChartContainer = styled.div`
   padding: 0;
   margin: 0;
   list-style: none;
-
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-
   -webkit-flex-flow: row wrap;
 `
 
