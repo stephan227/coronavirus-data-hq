@@ -19,14 +19,21 @@ import { CalculateMapData, CalculateTotals, CalculateTableData }  from './compon
 function useDataFetchEffect(query, data_prop=[]) {  
   const [data, setData] = useState(data_prop)
 
+  // Reset Cache every hour
+  // TODO: Replace with API and DB 
+  const currentDate = new Date()
+  const utcTimestamp = (currentDate.getTime() + currentDate.getTimezoneOffset()*60*1000);
+  const hourTimeStamp = Math.floor(((utcTimestamp/1000)/60)/60)
+  
+  const fetchQuery =`${query}?date=${hourTimeStamp}`
   useEffect(() => {
     axios(
-        query
+        fetchQuery
       ).then(result => {
         setData(result.data)
       })
     
-  }, [query]);
+  }, [fetchQuery]);
 
   return data;
 }
