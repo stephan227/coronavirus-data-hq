@@ -20,8 +20,6 @@ const CardItem = styled(CardTitleItem)`
 
 const CardTitle = styled.div``
 
-// const FooterLink = styled.a``
-
 function DashboardFooter ({last_updated}) {  
   return (
     <DashboardContainer>

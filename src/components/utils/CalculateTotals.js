@@ -4,7 +4,14 @@ const CalculateTableData = (WuhanVirusData) => {
     return {}
   }
 
+  let total = {cases: 0, deaths: 0, serious: 0, critical: 0, recovered: 0};
   const table_data = WuhanVirusData.reduce((all, item) => {
+    total.cases = total.cases + item.cases;
+    total.deaths = total.deaths + item.deaths;
+    total.serious = total.serious + item.serious;
+    total.critical = total.critical + item.critical;
+    total.recovered = total.recovered + item.recovered;
+    
     if (all[item.country_name]) {
       all[item.country_name] = {
         cases: all[item.country_name].cases + item.cases,
@@ -24,7 +31,9 @@ const CalculateTableData = (WuhanVirusData) => {
     }
     return all;
   }, {});
-  return table_data;
+
+  return Object.assign(table_data, {Total: total})
+  // return Object.assign(table_data, {...total})
 }
 
 
