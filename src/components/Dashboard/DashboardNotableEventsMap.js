@@ -13,7 +13,7 @@ const ChartTitle = styled.div`
   padding-bottom: 12px;
 `
 
-function DashboardSuspectedCasesMap () {
+function DashboardNotableEventsMap () {
   return (
     <DashboardContainer>
       <Card>
@@ -28,4 +28,4 @@ function DashboardSuspectedCasesMap () {
   )
 }
 
-export default DashboardSuspectedCasesMap;
+export default DashboardNotableEventsMap;

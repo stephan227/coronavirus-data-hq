@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {withTheme} from "styled-components";
 import Card from "../Cards/Card";
 import { Virus } from "../Icons";
 const DashboardContainer = styled.div`
@@ -14,17 +14,17 @@ const CardTitleItem = styled.div`
 
 
 const CardTitle = styled.div`
-  // display: flex;
-  // justify-content: flex-start;
+  display: flex;
+  justify-content: center;
 `
 
-function DashboardTitle () {  
+function DashboardTitle ({theme}) {  
   return (
     <DashboardContainer>
       <Card blockStyle={{padding: '15px 10px'}}>
         <CardTitle>
             <CardTitleItem>
-              <Virus />
+              <Virus fill={theme.colors.virusIcon} />
             </CardTitleItem>
             <CardTitleItem>
               Coronavirus Tracker
@@ -36,4 +36,4 @@ function DashboardTitle () {
   )
 }
 
-export default DashboardTitle;
+export default withTheme(DashboardTitle);

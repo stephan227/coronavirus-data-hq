@@ -25,10 +25,21 @@ const DashboardContainer = styled.div`
 const ChartTitle = styled.div`
   font-weight: 600;
 `
-function DashboardLineChart ({ConfirmedForecast, DeathsForecast}) {
+function DashboardLineChart ({ConfirmedForecast, DeathsForecast, suspected_echart_data}) {
   return (
-
     <ChartContainer>
+      <DashboardContainer>
+        <Card>
+          <ChartTitle>
+            Suspected vs. Forecast
+          </ChartTitle>
+          <div>
+            <EchartLineChart 
+              option={suspected_echart_data}
+            />
+          </div>
+        </Card>
+      </DashboardContainer>
       <DashboardContainer>
         <Card>
           <ChartTitle>

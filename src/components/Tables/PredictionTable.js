@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NumberFormat from 'react-number-format';
 
 const Table = styled.table`
-  width: 200px;
+  
 `
 const TableHeader = styled.thead``
 
@@ -17,7 +17,7 @@ const TableRow = styled.tr`
   border-top: none !important;
   ${props => {
     if (props.isToday) {
-      return `background-color: #dceef4;`
+      return `background-color: ${props.theme.colors.currentDateRowHighlight}`
     } else {
       return ``;
     }
@@ -57,9 +57,9 @@ const isToday = (dateToCheck) => {
 function PredictionTable ({
   prediction_data,
   forecast_property_name,
-  actual_property_name
+  actual_property_name,
+  suspected_property_name
 }) {
-  console.log('prediction_data', prediction_data)
   return (
     <Table>
       <TableHeader>
@@ -72,6 +72,9 @@ function PredictionTable ({
           </TableHeading>
           <TableHeading>
             Deaths
+          </TableHeading>
+          <TableHeading>
+            Suspected
           </TableHeading>
         </TableRowHeader>
       </TableHeader>
@@ -88,6 +91,9 @@ function PredictionTable ({
                 </TableCell>
                 <TableCell>
                   <NumberFormat value={item[actual_property_name]} displayType={'text'} thousandSeparator={true} />
+                </TableCell>
+                <TableCell>
+                  <NumberFormat value={item[suspected_property_name]} displayType={'text'} thousandSeparator={true} />
                 </TableCell>
             </TableRow>
             )

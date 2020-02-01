@@ -1,115 +1,88 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import Card from "../Cards/Card";
 import { Aid, Biohazard, Skull, Critical, KDRatio } from "../Icons";
-import { HexColors } from "../constants";
 import Suspect from "../Icons/Suspect";
 
 const DashboardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
-const CardChildren = styled.div`
+const CardValues = styled.div`
   font-size: 1.5em;
 `
-const CardTitle = styled.div`
+const CardContents = styled.div`
   display: inline-block;
+  font-weight: 500;
 `
 
+function ItemCard({Icon, color, title, values}) {
+  return (
+    <Card color={color} >
+      <CardContents>
+        <div> 
+          {Icon}
+        </div>
+        <CardValues style={{color: color}}>
+          {values}
+        </CardValues>
+        <div style={{color: color}}>
+          {title}
+        </div>
+      </CardContents>
+    </Card>
+  )
+}
 function DashboardCards ({
     suspected,
     total_cases,
     total_deaths,
     total_serious,
     total_critical,
-    mortality_rate }) {
+    mortality_rate,
+    theme }) {
+      console.log(theme)
   return (
     <DashboardContainer>
-      <Card color={HexColors.infected} 
-        >
-        <CardTitle>
-          <div>
-            <Biohazard />
-          </div>  
-          <CardChildren>
-            {total_cases}
-          </CardChildren>
-          <div>
-            Infected
-          </div>
-        </CardTitle>
-      </Card>
+      <ItemCard
+        Icon={<Biohazard fill={theme.colors.infectedIcon}/>}
+        color={theme.colors.infectedIcon}
+        title={'Infected'}
+        values={total_cases} />
 
-      <Card color={HexColors.serious} >
-        <CardTitle>
-          <div>
-            <Aid />
-          </div>
-          <CardChildren>
-            {total_serious}
-          </CardChildren>
-          <div>
-            Serious
-          </div>
-        </CardTitle>
-      </Card>
-      
-      <Card color={HexColors.critical} >
-        <CardTitle>
-          <div>
-            <Critical />
-          </div>
-          <CardChildren>
-            {total_critical}
-          </CardChildren>
-          <div>
-            Critical
-          </div>
-        </CardTitle>
-      </Card>
-      
-      <Card color={HexColors.deaths} >
-        <CardTitle>
-          <div>
-            <Skull />
-          </div>
-          <CardChildren>
-            {total_deaths}
-          </CardChildren>
-          <div>
-            Dead
-          </div>
-        </CardTitle>
-      </Card>
+      <ItemCard
+        Icon={<Aid stroke={theme.colors.seriousIcon}/>}
+        color={theme.colors.seriousIcon}
+        title={'Serious'}
+        values={total_serious} />
 
-      <Card color={'lightgray'}>
-        <CardTitle>
-          <div>
-            <KDRatio />
-          </div>
-          <CardChildren>
-            {mortality_rate} %
-          </CardChildren>
-          <div>
-            Death Rate
-          </div>
-        </CardTitle>
-      </Card>
-      <Card color={"#e9e9e9"}>
-        <CardTitle>
-          <div>
-            <Suspect />
-          </div>
-          <CardChildren>
-            {suspected.suspected}
-          </CardChildren>
-          <div>
-            Suspected
-          </div>
-        </CardTitle>
-      </Card>
+      <ItemCard
+        Icon={<Critical fill={theme.colors.seriousIcon}/>}
+        color={theme.colors.seriousIcon}
+        title={'Critical'}
+        values={total_critical} />
+
+      
+      <ItemCard
+        Icon={<Skull fill={theme.colors.deathsIcon}/>}
+        color={theme.colors.deathsIcon}
+        title={'Dead'}
+        values={total_deaths} />
+
+      <ItemCard
+        Icon={<KDRatio fill={theme.colors.deathRateIcon}/>}
+        color={theme.colors.deathRateIcon}
+        title={'Death Rate'}
+        values={`${mortality_rate} %`} />
+
+      <ItemCard
+        Icon={<Suspect fill={theme.colors.suspectedIcon}/>}
+        color={theme.colors.suspectedIcon}
+        title={'Suspected'}
+        values={suspected.suspected} />
+
     </DashboardContainer>
   )
 }
 
-export default DashboardCards;
+export default withTheme(DashboardCards);

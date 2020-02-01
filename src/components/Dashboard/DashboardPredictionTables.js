@@ -32,31 +32,33 @@ const PredictionTableContainer = styled.div`
 function DashboardPredictionTables ({prediction_data}) {
   return (
     <ChartContainer>
-      <DashboardContainer style={{width: "200px"}}>
+      <DashboardContainer>
         <Card>
           <ChartTitle>
-            Prediction
+            Forecast
           </ChartTitle>
           <PredictionTableContainer>
             <PredictionTable 
               prediction_data={prediction_data}
               forecast_property_name="confirmed_forecast"
               actual_property_name="deaths_forecast"
+              suspected_property_name="confirmed_forecast"
             />
           </PredictionTableContainer>
         </Card>
       </DashboardContainer>
 
-      <DashboardContainer style={{width: "200px"}}>
+      <DashboardContainer>
         <Card>
           <ChartTitle>
             Actual
           </ChartTitle>
           <PredictionTableContainer>
             <PredictionTable 
+              prediction_data={prediction_data}
               forecast_property_name="confirmed_actual"
               actual_property_name="deaths_actual"
-              prediction_data={prediction_data}
+              suspected_property_name="suspected_actual"
             />
           </PredictionTableContainer>
         </Card>
