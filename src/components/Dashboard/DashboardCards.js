@@ -40,8 +40,8 @@ function DashboardCards ({
     total_serious,
     total_critical,
     mortality_rate,
-    theme }) {
-      console.log(theme)
+    theme
+  }) {
   return (
     <DashboardContainer>
       <ItemCard
@@ -79,7 +79,7 @@ function DashboardCards ({
         Icon={<Suspect fill={theme.colors.suspectedIcon}/>}
         color={theme.colors.suspectedIcon}
         title={'Suspected'}
-        values={suspected.suspected} />
+        values={suspected} />
 
     </DashboardContainer>
   )

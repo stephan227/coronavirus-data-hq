@@ -20,13 +20,13 @@ const CardItem = styled(CardTitleItem)`
 
 const CardTitle = styled.div``
 
-function DashboardFooter ({last_updated}) {  
+function DashboardFooter ({lastUpdated}) {  
   return (
     <DashboardContainer>
       <Card blockStyle={{padding: '15px 10px'}}>
         <CardTitle>
             <CardItem>
-              Last Updated: {last_updated}
+              Last Updated: {lastUpdated}
             </CardItem>
         </CardTitle>
       </Card>

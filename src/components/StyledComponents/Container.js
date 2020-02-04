@@ -1,4 +1,4 @@
-// src/components/Container.js
+// src/components/StyledComponents/Container.js
 
 import styled from "styled-components";
 

@@ -54,12 +54,13 @@ const isToday = (dateToCheck) => {
 }
 
 
-function PredictionTable ({
-  prediction_data,
+function ForecastTable ({
+  forecast_data,
   forecast_property_name,
   actual_property_name,
   suspected_property_name
 }) {
+
   return (
     <Table>
       <TableHeader>
@@ -80,7 +81,7 @@ function PredictionTable ({
       </TableHeader>
       <TableBody>
         {
-          prediction_data.map((item) => {
+          forecast_data.map((item) => {
             return (
               <TableRow isToday={isToday(item.date)} key={`${forecast_property_name}${item.date}`}>
                 <FirstTableCell>
@@ -104,4 +105,4 @@ function PredictionTable ({
   )
 }
 
-export default PredictionTable;
+export default ForecastTable;

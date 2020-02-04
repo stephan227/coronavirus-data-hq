@@ -6,31 +6,51 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
 `
-const CardTitleItem = styled.div`
+const CardItem = styled.div`
   align-self: center;
   padding: 0px 5px;
   font-weight: 600;
 `
 
 
-const CardTitle = styled.div`
+const CardContent = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
 `
 
-function DashboardTitle ({theme}) {  
+
+const LastUpdatedCardItem = styled.div`
+  font-size: .8em;
+  color: #696969;
+  font-weight: 400;
+  text-align: left;
+`
+
+const CardTitleText = styled.div`
+  text-align: left;
+`
+
+function DashboardTitle ({theme, lastUpdated}) {  
   return (
     <DashboardContainer>
       <Card blockStyle={{padding: '15px 10px'}}>
-        <CardTitle>
-            <CardTitleItem>
+        <CardContent>
+            <CardItem>
               <Virus fill={theme.colors.virusIcon} />
-            </CardTitleItem>
-            <CardTitleItem>
-              Coronavirus Tracker
-            </CardTitleItem>
-
-        </CardTitle>
+            </CardItem>
+            <CardItem>
+              <CardTitleText>
+                Coronavirus Tracker
+              </CardTitleText>
+              <LastUpdatedCardItem>
+                {lastUpdated && 
+                  <>
+                    {lastUpdated} (Updated Hourly)
+                  </>
+                }
+              </LastUpdatedCardItem>
+            </CardItem>
+        </CardContent>
       </Card>
     </DashboardContainer>
   )

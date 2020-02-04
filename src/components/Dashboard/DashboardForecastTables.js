@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
-import PredictionTable from "../Tables/PredictionTable";
+import ForecastTable from "../Tables/ForecastTable";
 
 const DashboardContainer = styled.div`
   flex-grow: 1; 
@@ -25,11 +25,11 @@ const ChartContainer = styled.div`
   -webkit-flex-flow: row wrap;
 `
 
-const PredictionTableContainer = styled.div`
+const ForecastTableContainer = styled.div`
   justify-content: center;
   display: flex;
 `
-function DashboardPredictionTables ({prediction_data}) {
+function DashboardForecastTables ({forecast_data}) {
   return (
     <ChartContainer>
       <DashboardContainer>
@@ -37,14 +37,14 @@ function DashboardPredictionTables ({prediction_data}) {
           <ChartTitle>
             Forecast
           </ChartTitle>
-          <PredictionTableContainer>
-            <PredictionTable 
-              prediction_data={prediction_data}
+          <ForecastTableContainer>
+            <ForecastTable 
+              forecast_data={forecast_data}
               forecast_property_name="confirmed_forecast"
               actual_property_name="deaths_forecast"
               suspected_property_name="confirmed_forecast"
             />
-          </PredictionTableContainer>
+          </ForecastTableContainer>
         </Card>
       </DashboardContainer>
 
@@ -53,14 +53,14 @@ function DashboardPredictionTables ({prediction_data}) {
           <ChartTitle>
             Actual
           </ChartTitle>
-          <PredictionTableContainer>
-            <PredictionTable 
-              prediction_data={prediction_data}
+          <ForecastTableContainer>
+            <ForecastTable 
+              forecast_data={forecast_data}
               forecast_property_name="confirmed_actual"
               actual_property_name="deaths_actual"
               suspected_property_name="suspected_actual"
             />
-          </PredictionTableContainer>
+          </ForecastTableContainer>
         </Card>
       </DashboardContainer>
     </ChartContainer>
@@ -68,4 +68,4 @@ function DashboardPredictionTables ({prediction_data}) {
   )
 }
 
-export default DashboardPredictionTables;
+export default DashboardForecastTables;
