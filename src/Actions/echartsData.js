@@ -63,7 +63,7 @@ const setDeathsEchartData = (data, axisColors) => {
 export const fetchSuspectedEchartData = () => async (dispatch, getState) => {
   dispatch(setStatusSuspectedEchart("pending"))
 
-  const requestData = await fetchDataSet(`/api/echart-deaths`);
+  const requestData = await fetchDataSet(`/api/echart-suspected`);
   if (!requestData || requestData.err || !requestData.data) {
     dispatch(setStatusSuspectedEchart("errored"))
   } else {
@@ -86,7 +86,7 @@ export const fetchInfectedEchartData = () => async (dispatch, getState) => {
 export const fetchDeathsEchartData = () => async (dispatch, getState) => {
   dispatch(setStatusDeathsEchart("pending"))
 
-  const requestData = await fetchDataSet(`/api/echart-suspected`);
+  const requestData = await fetchDataSet(`/api/echart-deaths`);
   if (!requestData || requestData.err || !requestData.data) {
     dispatch(setStatusDeathsEchart("errored"))
   } else {
