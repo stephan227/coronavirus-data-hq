@@ -22,9 +22,10 @@ export default class VectorLayersExample extends Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.props.map_data.reduce((all, item) => {
-          if (!item.coordinates || item.length === 0) {
+          if (!item.coordinates || item.coordinates.length === 0) {
             return all;
           }
+          console.log(item.coordinates)
           all.push (
             <Circle key={item.county_id} center={item.coordinates} color="red" fillColor="red" radius={Math.log2(item.cases) * 15000}>
               <Popup>
