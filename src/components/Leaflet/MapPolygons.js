@@ -21,32 +21,36 @@ export default class VectorLayersExample extends Component {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {this.props.map_data.map(item => {
-            return (
-              <Circle key={item.county_id} center={item.coordinates} color="red" fillColor="red" radius={Math.log2(item.cases) * 15000}>
-                <Popup>
-                  <TooltipTitle>
-                    {item.county_name} - {item.country_name}
-                  </TooltipTitle>
-                  <div>
-                    Infected: {item.cases}
-                  </div>
-                  <div>
-                    Serious: {item.serious}
-                  </div>
-                  <div>
-                    Critical: {item.critical}
-                  </div>
-                  <div>
-                    Dead: {item.deaths}
-                  </div>
-                  <div>
-                    Recovered: {item.recovered}
-                  </div>
-                </Popup>
-              </Circle>
-            )
-        })}
+        {this.props.map_data.reduce((all, item) => {
+          if (!item.coordinates || item.length === 0) {
+            return all;
+          }
+          all.push (
+            <Circle key={item.county_id} center={item.coordinates} color="red" fillColor="red" radius={Math.log2(item.cases) * 15000}>
+              <Popup>
+                <TooltipTitle>
+                  {item.county_name} - {item.country_name}
+                </TooltipTitle>
+                <div>
+                  Infected: {item.cases}
+                </div>
+                <div>
+                  Serious: {item.serious}
+                </div>
+                <div>
+                  Critical: {item.critical}
+                </div>
+                <div>
+                  Dead: {item.deaths}
+                </div>
+                <div>
+                  Recovered: {item.recovered}
+                </div>
+              </Popup>
+            </Circle>
+          )
+          return all;
+        },[])}
       </Map>
     )
   }
