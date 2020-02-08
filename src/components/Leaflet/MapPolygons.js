@@ -25,7 +25,7 @@ export default class VectorLayersExample extends Component {
           if (!item.coordinates || item.coordinates.length === 0) {
             return all;
           }
-          console.log(item.coordinates)
+          
           all.push (
             <Circle key={item.county_id} center={item.coordinates} color="red" fillColor="red" radius={Math.log2(item.cases) * 15000}>
               <Popup>
