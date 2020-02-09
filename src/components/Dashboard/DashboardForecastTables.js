@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
 import ForecastTable from "../Tables/ForecastTable";
+import { Loading } from "../Icons";
 
 const DashboardContainer = styled.div`
   flex-grow: 1; 
@@ -29,7 +30,8 @@ const ForecastTableContainer = styled.div`
   justify-content: center;
   display: flex;
 `
-function DashboardForecastTables ({forecast_data}) {
+function DashboardForecastTables ({forecast_data, statusForecastData}) {
+  const isLoading = (statusForecastData === "pending");
   return (
     <ChartContainer>
       <DashboardContainer>
@@ -38,12 +40,16 @@ function DashboardForecastTables ({forecast_data}) {
             Forecast
           </ChartTitle>
           <ForecastTableContainer>
-            <ForecastTable 
-              forecast_data={forecast_data}
-              forecast_property_name="confirmed_forecast"
-              actual_property_name="deaths_forecast"
-              suspected_property_name="confirmed_forecast"
-            />
+            {
+              (isLoading)?
+                <Loading /> :
+                <ForecastTable 
+                forecast_data={forecast_data}
+                forecast_property_name="confirmed_forecast"
+                actual_property_name="deaths_forecast"
+                suspected_property_name="confirmed_forecast"
+              />
+            }
           </ForecastTableContainer>
         </Card>
       </DashboardContainer>
@@ -54,12 +60,16 @@ function DashboardForecastTables ({forecast_data}) {
             Actual
           </ChartTitle>
           <ForecastTableContainer>
-            <ForecastTable 
-              forecast_data={forecast_data}
-              forecast_property_name="confirmed_actual"
-              actual_property_name="deaths_actual"
-              suspected_property_name="suspected_actual"
-            />
+            {
+              (isLoading)?
+                <Loading /> :
+                <ForecastTable 
+                  forecast_data={forecast_data}
+                  forecast_property_name="confirmed_actual"
+                  actual_property_name="deaths_actual"
+                  suspected_property_name="suspected_actual"
+                />
+            }
           </ForecastTableContainer>
         </Card>
       </DashboardContainer>

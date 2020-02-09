@@ -20,7 +20,7 @@ export default (
     table_data: [],
     
     globalStats: [],
-    globalStatsStatus: false,
+    globalStatsStatus: null,
 
     lastUpdated: null
   },

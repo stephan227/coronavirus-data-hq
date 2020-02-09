@@ -7,7 +7,10 @@ function DashboardSummaryTableContainer ({
   table_data,
   globalStatsStatus}) {
   return (
-    <DashboardSummaryTable table_data={table_data} />
+    <DashboardSummaryTable
+      table_data={table_data}
+      globalStatsStatus={globalStatsStatus}
+      />
   )
 }
 

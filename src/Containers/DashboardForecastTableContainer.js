@@ -4,18 +4,21 @@ import DashboardForecastTables from "../components/Dashboard/DashboardForecastTa
 
 
 function DashboardForecastTableContainer ({
-    forecast_data
+    forecast_data,
+    statusForecastData
   }) {
   return (
     <DashboardForecastTables 
       forecast_data={forecast_data}
+      statusForecastData={statusForecastData}
       />
   )
 }
 
 function mapStateToProps(state) {
   return {
-    forecast_data: state.forecastData.forecastData
+    forecast_data: state.forecastData.forecastData,
+    statusForecastData: state.forecastData.statusForecastData
   };
 }
 

@@ -6,13 +6,19 @@ import DashboardLineChart from "../components/Dashboard/DashboardLineChart";
 function DashboardLineChartContainer ({
     suspectedEchart,
     infectedEchart,
-    deathsEchart
+    deathsEchart,
+    statusSuspectedEchart,
+    statusInfectedEchart,
+    statusDeathsEchart
   }) {
   return (
     <DashboardLineChart 
       echartsSuspectedForecast={suspectedEchart}
       echartsConfirmedForecast={infectedEchart}
       echartsDeathsForecast={deathsEchart}
+      statusSuspectedEchart={statusSuspectedEchart}
+      statusInfectedEchart={statusInfectedEchart}
+      statusDeathsEchart={statusDeathsEchart}
       />
   )
 }
@@ -21,7 +27,11 @@ function mapStateToProps(state) {
   return {
     suspectedEchart: state.echartsData.suspectedEchart,
     infectedEchart: state.echartsData.infectedEchart,
-    deathsEchart: state.echartsData.deathsEchart
+    deathsEchart: state.echartsData.deathsEchart,
+
+    statusSuspectedEchart: state.echartsData.statusSuspectedEchart,
+    statusInfectedEchart: state.echartsData.statusInfectedEchart,
+    statusDeathsEchart: state.echartsData.statusDeathsEchart
   };
 }
 

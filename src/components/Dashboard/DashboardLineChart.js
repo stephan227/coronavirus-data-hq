@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../Cards/Card";
 import EchartLineChart from "../Charts/EchartLineChart";
+import { Loading } from "../Icons";
 
 const ChartContainer = styled.div`
   padding: 0;
@@ -25,7 +26,18 @@ const DashboardContainer = styled.div`
 const ChartTitle = styled.div`
   font-weight: 600;
 `
-function DashboardLineChart ({echartsConfirmedForecast, echartsDeathsForecast, echartsSuspectedForecast}) {
+function DashboardLineChart ({
+  echartsConfirmedForecast,
+  echartsDeathsForecast,
+  echartsSuspectedForecast,
+  statusSuspectedEchart,
+  statusInfectedEchart,
+  statusDeathsEchart
+}) {
+  const isSuspectedLoading = (statusSuspectedEchart === 'pending')
+  const isInfectedLoading = (statusInfectedEchart === 'pending')
+  const isDeathsLoading = (statusDeathsEchart === 'pending')
+
   return (
     <ChartContainer>
       <DashboardContainer>
@@ -34,9 +46,13 @@ function DashboardLineChart ({echartsConfirmedForecast, echartsDeathsForecast, e
             Suspected vs. Forecast
           </ChartTitle>
           <div>
-            <EchartLineChart 
-              option={echartsSuspectedForecast}
-            />
+            {
+              (isSuspectedLoading)?
+              <Loading />:
+              <EchartLineChart 
+                option={echartsSuspectedForecast}
+              />
+            }
           </div>
         </Card>
       </DashboardContainer>
@@ -46,9 +62,13 @@ function DashboardLineChart ({echartsConfirmedForecast, echartsDeathsForecast, e
             Infected vs. Forecast
           </ChartTitle>
           <div>
-            <EchartLineChart 
-              option={echartsConfirmedForecast}
-            />
+            {
+              (isInfectedLoading)?
+              <Loading />:
+              <EchartLineChart 
+                option={echartsConfirmedForecast}
+              />
+            }
           </div>
         </Card>
       </DashboardContainer>
@@ -58,9 +78,13 @@ function DashboardLineChart ({echartsConfirmedForecast, echartsDeathsForecast, e
             Deaths vs. Forecast
           </ChartTitle>
           <div>
-            <EchartLineChart 
-              option={echartsDeathsForecast}
-            />
+            {
+              (isDeathsLoading)?
+              <Loading />:
+              <EchartLineChart 
+                option={echartsDeathsForecast}
+              />
+            }
           </div>
         </Card>
       </DashboardContainer>

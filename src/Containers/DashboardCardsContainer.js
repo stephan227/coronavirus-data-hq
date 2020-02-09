@@ -10,6 +10,7 @@ function DashboardCardsContainer ({
     total_serious,
     total_critical,
     mortality_rate,
+    globalStatsStatus
   }) {
   return (
     <DashboardCards    
@@ -19,6 +20,7 @@ function DashboardCardsContainer ({
       total_serious={total_serious}
       total_critical={total_critical}
       mortality_rate={mortality_rate}
+      globalStatsStatus={globalStatsStatus}
     />
   )
 }

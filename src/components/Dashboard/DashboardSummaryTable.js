@@ -3,6 +3,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import styled from "styled-components";
 import Card from "../Cards/Card";
+import { Loading } from "../Icons";
 // import {Colors} from "../constants"
 
 const DashboardContainer = styled.div`
@@ -33,7 +34,8 @@ const CreateTableFromData = (table_data) => {
 }
 
 
-function DashboardSummaryTable ({table_data}) {
+function DashboardSummaryTable ({table_data, globalStatsStatus}) {
+  const isLoading = (globalStatsStatus === 'pending');
   return (
     <DashboardContainer>
       <Card>
@@ -41,23 +43,25 @@ function DashboardSummaryTable ({table_data}) {
           Summary
         </ChartTitle>
         <div>
-          <Table>
-            <Thead>
-              <Tr>
-                <Th style={{fontWeight: 800}}>Country</Th>
-                <Th style={{fontWeight: 400}}>Infected</Th>
-                <Th style={{fontWeight: 400}}>Serious</Th>
-                <Th style={{fontWeight: 400}}>Critical</Th>
-                <Th style={{fontWeight: 400}}>Recovered</Th>
-                <Th style={{fontWeight: 400}}>Dead</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {
-                CreateTableFromData(table_data)
-              }
-            </Tbody>
-          </Table>
+          {
+            (isLoading)?
+              <Loading />:
+              <Table>
+                <Thead>
+                  <Tr>
+                    <Th style={{fontWeight: 800}}>Country</Th>
+                    <Th style={{fontWeight: 400}}>Infected</Th>
+                    <Th style={{fontWeight: 400}}>Serious</Th>
+                    <Th style={{fontWeight: 400}}>Critical</Th>
+                    <Th style={{fontWeight: 400}}>Recovered</Th>
+                    <Th style={{fontWeight: 400}}>Dead</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {CreateTableFromData(table_data)}
+                </Tbody>
+              </Table>
+          }
         </div>
       </Card>
     </DashboardContainer>
