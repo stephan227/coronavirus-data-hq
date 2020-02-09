@@ -31,7 +31,6 @@ function ItemCardValue({isLoading, values}) {
 }
 
 function ItemCard({Icon, color, title, values, isLoading}) {
-  console.log('isloading', isLoading)
   return (
     <Card color={color} >
       <CardContents>
@@ -61,7 +60,7 @@ function DashboardCards ({
     globalStatsStatus,
     theme
   }) {
-  console.log('globalStatsStatus', globalStatsStatus)
+    
   const isLoading = (globalStatsStatus === 'pending')
   return (
     <DashboardContainer>
