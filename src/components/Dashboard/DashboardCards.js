@@ -17,7 +17,7 @@ const CardContents = styled.div`
 `
 
 function ItemCardValue({isLoading, values}) {
-  if (true) {
+  if (isLoading) {
     return (
       <Loading />
     )
