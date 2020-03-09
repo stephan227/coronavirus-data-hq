@@ -8,8 +8,8 @@ import './App.css';
 import DashboardCardsContainer from './Containers/DashboardCardsContainer';
 import DashboardMapContainer from './Containers/DashboardMapContainer';
 import DashboardSummaryTableContainer from './Containers/DashboardSummaryTableContainer';
-import DashboardLineChartContainer from './Containers/DashboardLineChartContainer';
-import DashboardForecastTableContainer from './Containers/DashboardForecastTableContainer';
+// import DashboardLineChartContainer from './Containers/DashboardLineChartContainer';
+// import DashboardForecastTableContainer from './Containers/DashboardForecastTableContainer';
 import DashboardTitleContainer from './Containers/DashboardTitleContainer'
 
 import DashboardNotableEventsMap from './components/Dashboard/DashboardNotableEventsMap';
@@ -30,9 +30,9 @@ function App({theme}) {
         
         <DashboardNotableEventsMap />
 
-        <DashboardLineChartContainer />
+        {/* <DashboardLineChartContainer /> */}
 
-        <DashboardForecastTableContainer />
+        {/* <DashboardForecastTableContainer /> */}
 
         <DashboardSummaryTableContainer />
 
